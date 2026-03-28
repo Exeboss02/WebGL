@@ -1,0 +1,15 @@
+{
+    "git.openRepositoryInParentFolders": "never",
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "workbench.secondarySideBar.defaultVisibility": "hidden",
+    "terminal.integrated.initialHint": false,
+    "cmake.cmakePath": "/usr/bin/cmake",
+    "workbench.tree.indent": 15,
+    "workbench.iconTheme": "material-icon-theme",
+    "liveServer.settings.ChromeDebuggingAttachment": false,
+    "liveServer.settings.mimeTypes": {
+        "js": "text/javascript"
+    }
+}

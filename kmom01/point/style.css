@@ -1,0 +1,25 @@
+html {
+    background-color: #14f0cb;
+}
+
+main {
+    margin: 25px auto;
+    width: 1200px;
+    background-color: #eee;
+    padding: 1em;
+    border: 1px solid #424141;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px 5px #999;
+}
+
+footer {
+    padding-top: 1em;
+    text-align: center;
+}
+
+#canvas1 {
+    display: block;
+    margin: 20px auto;
+    border: 1px solid #999;
+    background-color: #bdabff;
+}
