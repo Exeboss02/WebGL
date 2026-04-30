@@ -14,7 +14,8 @@
         <a href="redovisning.html">Redovisning</a> |
         <a href="kmom01.html">Kmom01</a> |
         <a href="kmom02.html">Kmom02</a> |
-        <a href="kmom03.html">Kmom03</a>
+        <a href="kmom03.html">Kmom03</a> |
+        <a href="kmom05.html">Kmom05</a>
     </nav>
 </header>
 
@@ -61,7 +62,42 @@
 
 <section>
 <h2>Kmom04-05</h2>
-<p>Här är redovisningstexten</p>
+<p>
+    1.1 When researching about rendering metaballs I stumbeled upon ray marching, and then I watched some youtube videos to understand it<br>
+    1.2 My main source/inspiration is https://youtu.be/khblXafu7iA?si=Fz9WOlPjrCLfrqsk which is a bit more in depth, but I also watched https://youtu.be/BNZtUB7yhX4?si=kWpT0fURO44PyjAY.<br>
+        I also used https://iquilezles.org/articles/distfunctions/ for formulas.<br>
+    1.3 I watched the videos to understand how ray marching works and realized it's very similar to how ray tracing works, which is a teqnique we've worked with before<br>
+        so after that I could start working<br>
+    1.4 Not really, After watching the videos I could piece together the next steps and eventually got a result.<br>
+<br>
+    2.1 I used ray marching, which is a teqnique similar to ray tracing, where you for each pixel send out a ray looking for objects in the scene. In ray marching<br>
+        you describe objects with signed distance functions (sdf's) instead of using traditional vertices. An sdf returns the shortest distance from a point in the room<br>
+        to the object in question. The ray's go with steps in the scene where each step is the current shortest sdf value, and when this value is below a threshold, it has<br>
+        then hit something. Then you can use a SmoothUnion function to blend the sdf values to create the floatey effect.<br>
+    2.2/2.4 Ray marching seems like a good soliution for this, but it is harder to work with than vertex based geometry since you can only use sdf's, so it's good for some effects but really bad for others. <br>
+        The lack of uniform buffers made it really hard to pass multiple variables to the shader at once, which made me put lots of single uniform values instead which is<br>
+        really ugly, I could have put the values in a texture instead and then sampled the texture in the shader, but that seemed overkill for only 8 vec3 values. Indexing<br>
+        arrays was also painfull since they have to be constants, which forced me to do a series of if statements to compare my index value to constants that I actually could<br>
+        index the array with instead of using the "runtime-index" directly. This could probably be solved in a better way, but felt like too much work for this assignment.<br>
+        I also have 2 tan operations in the shader which is not the best, I could probably rewrite that into something like a screenHeight/screenWidth constant with trigonometry.<br>
+    2.3 No I didn't think of other solutions<br>
+<br>
+    3.1 I used a SmoothBlending function to make the metaballs look more floatey and normals and a pointlight to make them look 3D, and you can also move the camera with wasd<br>
+    3.2 see 3.1<br>
+    3.3 I did prioritization, I wanted the metaballs to be in different colours first and then also blend the colours between them when they were intersecting, but it<br>
+        became too much work in the end so I ended up with a red colour for all metaballs. There are also other things I would've liked to add, for example having even<br>
+        smoother intersection edges, but I don't really have more time to put into this project.<br>
+<br>
+    This project was good for this course, but could have given more direction in the descritpion. It was definitely challenging but not too hard once discovering ray marching.<br>
+    My biggest problems are with javascript and webgl, were webgl (1.0) lacks essential functionality to write good code (uniform buffers and array indexing).<br>
+    I've also ran out of patience with javascript, it is just clanky and has mostly to do with that it is an untyped language, which isn't my thing. Other than that<br>
+    it went pretty well and was a very interesting project.<br>
+<br>
+    I think this course has a place in our program, but there has to be some changes. Most of the initial assignments in each kmom were very redundant and could be much shorter.<br>
+    It could focus even more on the webgl parts and maybe have lectures on how to handle a bit larger code structures in javascript (which is much harder to maintain <br>
+    than in C/C++ since you don't define data types etc.). Also dbwebb feels a bit old, something else would be good. I would give the course a 5/10, it defenitely needs<br>
+    big refinements but is still an okey course.<br>
+</p>
 </section>
 
 <footer>

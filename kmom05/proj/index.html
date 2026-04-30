@@ -6,17 +6,6 @@
     <title>Metaballs</title>
 </head>
 
-<header>
-    <nav>
-        <a href="index.html">Me</a> |
-        <a href="redovisning.html">Redovisning</a> |
-        <a href="kmom01.html">Kmom01</a> |
-        <a href="kmom02.html">Kmom02</a> |
-        <a href="kmom03.html">Kmom03</a> |
-        <a href="kmom05.html">Kmom05</a>
-    </nav>
-</header>
-
 <body>
 <main>
     <h1>Metaballs</h1>
@@ -102,10 +91,12 @@ SceneSDFResult SceneSDF(vec3 positions[8], vec3 pointStep)
 
         if(distance < result.minimumDistance)
         {
-            result.minimumDistance = distance; //removing this makes them look floateyer but less 3D
+            //result.minimumDistance = distance; //removing this makes them look floateyer but less 3D
             result.sphereIndex = i;
         }
     }
+
+    result.minimumDistance = -1.0;
 
     float blendedDistance = distances[0];
     for(int i = 1; i < 8; i++)
@@ -176,7 +167,8 @@ vec3 RayMarch(vec3 spherePositions[8], vec3 sphereColours[8], vec3 rayOrigin, ve
 
             float lightMultiplier = max(dot(normal, lightVector), 0.3);
 
-            return sphereColours[0] * lightMultiplier;
+
+            return sphereColours[0] * lightMultiplier * (1.0 - max(abs(normal.x), 0.0)) * (1.0 - max(abs(normal.y), 0.0)) + vec3(0.2, 0, 0.6) * max(abs(normal.x), 0.0) + vec3(0.2, 0, 0.6) * max(abs(normal.y), 0.0);
         }
 
         t += result.minimumDistance;
@@ -232,14 +224,14 @@ void main() {
 }
 </script>
 
-<script type="text/javascript" src="../../me/lib/webgl-utils.js"></script>
-<script type="text/javascript" src="../../me/libs/webgl-debug.js"></script>
-<script type="text/javascript" src="../../me/lib/cuon-utils.js"></script>
-<script type="text/javascript" src="../../me/lib/cuon-matrix.js"></script>
+<script type="text/javascript" src="../../lib/webgl-utils.js"></script>
+<script type="text/javascript" src="../../libs/webgl-debug.js"></script>
+<script type="text/javascript" src="../../lib/cuon-utils.js"></script>
+<script type="text/javascript" src="../../lib/cuon-matrix.js"></script>
 
     <!-- Include your scripts in order -->
-    <script src="js/webGLclasses2.js"></script>
-    <script src="js/metaballs.js"></script>
+    <script src="webGLclasses2.js"></script>
+    <script src="metaballs.js"></script>
 
 </body>
 </html>
